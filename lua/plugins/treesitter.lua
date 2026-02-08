@@ -1,22 +1,23 @@
 -- Treesitter for advanced syntax highlighting
 return {
   "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPre", "BufNewFile" },
+  lazy = false,
   build = ":TSUpdate",
   dependencies = {
     "windwp/nvim-ts-autotag",
   },
   config = function()
-    local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+    local status_ok, configs = pcall(require, "nvim-treesitter.configs")
     if not status_ok then
-      return
+      configs = require("nvim-treesitter")
     end
 
-    treesitter.setup({
+    configs.setup({
       highlight = {
         enable = true,
       },
       indent = { enable = true },
+      auto_install = true,
       autotag = {
         enable = true,
       },

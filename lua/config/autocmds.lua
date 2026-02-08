@@ -6,3 +6,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+vim.api.nvim_create_user_command("Run", function()
+  vim.cmd("!run-rust.sh " .. vim.fn.expand "%")
+end, {})

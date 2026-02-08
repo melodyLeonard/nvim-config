@@ -26,6 +26,8 @@ return {
         "stylua",
         "eslint_d",
         "black",
+        "codelldb",
+        "rust-analyzer",
       },
     })
   end,
